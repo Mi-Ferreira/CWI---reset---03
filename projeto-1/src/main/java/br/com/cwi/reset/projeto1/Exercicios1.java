@@ -6,23 +6,48 @@ import java.util.List;
 public class Exercicios1 {
 
     public Integer somarLista(List<Integer> numeros) {
-        return 10;
+        for (int i = o; i<numeros.length; i++){
+            int soma = numeros [i];
+            soma++;
+        }
+        return soma;
     }
 
     public Double calcularMedia(List<Integer> numeros) {
-        return 10.0;
+        return (double) somarLista(numeros)/ numeros.size();
     }
 
     public Integer obterMaiorNumero(List<Integer> numeros) {
-        return 10;
+        Integer maior = numeros.get(0);
+
+        for (Integer num : numeros) {
+            if (num > maior) {
+                maior = num;
+            }
+        }
+        return maior;
     }
 
     public String obterPalavraInvertida(String palavra) {
-        return "edcba";
+        String invert = "";
+        for (int i<palavra.size();i>=0;i--){
+            invert += palavra.charAt(i);
+        }
+        return invert;
     }
 
     public List<Integer> ordenarLista(List<Integer> numeros) {
-        return Arrays.asList(1, 2, 3, 4, 5);
+       Integer[] ints = (Integer[]) numeros.toArray();
+        for (int i = 0; i<numeros.size();i++){
+           for(int j = i+1; j<numeros.size();j++){
+               if(ints[j] < ints[i]){
+                   Integer aux = ints[j];
+                   ints[j] = ints[i];
+                   ints[i] = aux;
+               }
+           }
+       }
     }
+     return Arrays.asList(ints);
 }
 
