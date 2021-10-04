@@ -6,11 +6,11 @@ import java.util.List;
 public class Exercicios1 {
 
     public Integer somarLista(List<Integer> numeros) {
-        for (int i = o; i<numeros.length; i++){
-            int soma = numeros [i];
-            soma++;
+        Integer sum = 0;
+        for (Integer num : numeros) {
+            sum += num;
         }
-        return soma;
+        return sum;
     }
 
     public Double calcularMedia(List<Integer> numeros) {
@@ -30,24 +30,26 @@ public class Exercicios1 {
 
     public String obterPalavraInvertida(String palavra) {
         String invert = "";
-        for (int i<palavra.size();i>=0;i--){
+        for (int i=palavra.length()-1;i>=0;i--){
             invert += palavra.charAt(i);
         }
         return invert;
     }
 
     public List<Integer> ordenarLista(List<Integer> numeros) {
-       Integer[] ints = (Integer[]) numeros.toArray();
-        for (int i = 0; i<numeros.size();i++){
-           for(int j = i+1; j<numeros.size();j++){
-               if(ints[j] < ints[i]){
-                   Integer aux = ints[j];
-                   ints[j] = ints[i];
-                   ints[i] = aux;
-               }
-           }
-       }
+        Integer[] ints = numeros.toArray(new Integer[numeros.size()]);
+        Integer aux;
+        for (int i = 0; i < numeros.size() - 1; i++) {
+            for (int j = i + 1; j < numeros.size(); j++) {
+                if (ints[j] < ints[i]) {
+                    aux = ints[j];
+                    ints[j] = ints[i];
+                    ints[i] = aux;
+                }
+            }
+        }
+        return Arrays.asList(ints);
     }
-     return Arrays.asList(ints);
+
 }
 

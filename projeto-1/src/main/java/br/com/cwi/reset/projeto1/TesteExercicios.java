@@ -22,7 +22,7 @@ public class TesteExercicios {
         System.out.println("Resultado esperado -> odranoeL, Resultado obtido -> " + palavraInvertida);
 
         List<Integer> numerosOrdenados = exercicio.ordenarLista(numeros);
-        System.out.println("Numeros ordenados: ");
+        System.out.println("Numeros ordenados: "+numerosOrdenados);
 
         for (Integer numero : numerosOrdenados) {
             System.out.println(numero);
