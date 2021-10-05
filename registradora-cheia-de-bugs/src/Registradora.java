@@ -3,14 +3,14 @@ public class Registradora {
 
     public static void main(String[] args) {
 //        primeiroBug();
-
+//
 //        segundoBug();
-
-        terceiroBug();
 //
-//        quartoBug();
+//        terceiroBug();
 //
-//        quintoBug();
+ //       quartoBug();
+//
+       quintoBug();
 //
 //        sextoBug();
     }
