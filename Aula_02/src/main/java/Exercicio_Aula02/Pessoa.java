@@ -2,15 +2,16 @@ package Exercicio_Aula02;
 
 public class Pessoa {
 
-    private String nome;
-    private Integer idade;
-    private Genero genero;
+    public String nome;
+    public Integer idade;
+    public Genero genero;
 
     public Pessoa(String nome, Integer idade, Genero genero) {
         this.nome = nome;
         this.idade = idade;
         this.genero = genero;
     }
+
 
     public void imprimirInformacoes (){
         System.out.println("Nome "+nome);

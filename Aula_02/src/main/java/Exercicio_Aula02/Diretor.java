@@ -1,6 +1,6 @@
 package Exercicio_Aula02;
 
-public class Diretor extends Pessoa{
+public class Diretor extends Pessoa {
 
     private Integer quantidadeFilmes;
 
@@ -8,4 +8,6 @@ public class Diretor extends Pessoa{
         super(nome, idade, genero);
         this.quantidadeFilmes = quantidadeFilmes;
     }
+
 }
+

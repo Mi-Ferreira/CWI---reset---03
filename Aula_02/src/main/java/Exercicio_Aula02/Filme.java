@@ -20,11 +20,11 @@ public class Filme {
 
 
 
-    public void reproduzir(){
+    /*public void reproduzir(){
         System.out.println("Nome Filme: "+nome);
         System.out.println("Descricao: "+descricao);
         System.out.println("Duracao: "+duracao);
         System.out.println("Diretor: "+diretor.getNome());
 
-    }
+    }*/
 }
