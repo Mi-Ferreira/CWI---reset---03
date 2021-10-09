@@ -6,13 +6,13 @@ public class Registradora {
 //
 //       segundoBug();
 //
-//       terceiroBug();
+  //     terceiroBug();
 //
- //      quartoBug();
+  //     quartoBug();
 //
-//       quintoBug();
+ //     quintoBug();
 //
-      sextoBug();
+//sextoBug();
     }
 
     public static double registrarItem(String item, int quantidade) {
@@ -91,7 +91,7 @@ public class Registradora {
         System.out.println(String.format("Valor total: %.2f", precoTotal));
     }
 
-    public static void sextoBug() {
+    private static void sextoBug() {
         DataProjeto.criarDataComCozinhaEncerradaSemDiaUtil();
         // Cliente 1
         System.out.println("Cliente 1");
