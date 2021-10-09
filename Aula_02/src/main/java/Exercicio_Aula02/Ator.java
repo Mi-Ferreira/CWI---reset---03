@@ -1,20 +1,16 @@
 package Exercicio_Aula02;
 
-public class Diretor {
+public class Ator {
     private String nome;
     private Integer idade;
-    private Integer quantidadeFilmes;
+    private Integer numeroOscars;
     private Genero genero;
 
-    public Diretor(String nome, Integer idade, Integer quantidadeFilmes,Genero genero ) {
+    public Ator(String nome, Integer idade, Integer numeroOscars, Genero genero) {
         this.nome = nome;
         this.idade = idade;
-        this.quantidadeFilmes = quantidadeFilmes;
+        this.numeroOscars = numeroOscars;
         this.genero = genero;
-    }
-
-    public String getNome() {
-        return nome;
     }
 
     public void imprimirInformacoes (){
@@ -22,4 +18,6 @@ public class Diretor {
         System.out.println("Idade "+idade);
         System.out.println("Genero "+genero.getDescricao());
     }
+
+
 }
