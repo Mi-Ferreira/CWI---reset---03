@@ -10,10 +10,10 @@ public class Aplicacao {
         Filme f2 = new Filme ("Homem Aranha Longe de Casa","SuperHeroi", 250,2029,4.2,diretor);
         f2.reproduzir();*/
 
-        Pessoa diretor = new Diretor("Jon Watts", 40,Genero.MASCULINO, 7);
+        Diretor diretor = new Diretor("Jon Watts", 40,Genero.MASCULINO, 7);
         diretor.imprimirInformacoes();
 
-        Pessoa ator = new Ator("Tom Holland", 25, Genero.MASCULINO,7);
+        Ator ator = new Ator("Tom Holland", 25, Genero.MASCULINO,7);
         ator.imprimirInformacoes();
     }
 }
