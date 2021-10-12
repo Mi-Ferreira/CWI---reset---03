@@ -1,7 +1,8 @@
 package Exercicio_Aula02;
 
-import java.time.LocalDate;
-import java.time.Period;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class Aplicacao {
     public static void main(String[] args) {
@@ -12,16 +13,26 @@ public class Aplicacao {
         Ator ator = new Ator("Tom Holland",01,10,1980, Genero.MASCULINO, 7);
         ator.imprimirInformacoes();
 
-        try{
-            Filme filme= new Filme("Homem Aranha de volta ao Lar", "SuperHeroi", 133, 2017, 7.0, diretor);
-        }
-        catch (AvaliacaoForaDoPadraoException e){
-            System.out.print(e.getMessage());
-        }
+           try {
+                Filme filme = new Filme("Homem Aranha de volta ao Lar", "SuperHeroi", 133, 2017, 4.0, diretor);
+           } catch (AvaliacaoForaDoPadraoException e) {
+              System.out.print(e.getMessage());
+            }
 
-       /* Filme f2 = new Filme("Homem Aranha Longe de Casa", "SuperHeroi", 250, 2029, 4.2, diretor);
-        f2.reproduzir();*/
 
+            try {
+                Filme filme2 = new Filme("Homem Aranha Longe de Casa", "SuperHeroi", 250, 2029, 4.2, diretor);
+            } catch (AvaliacaoForaDoPadraoException e) {
+               System.out.print(e.getMessage());
+           }
+
+
+        List<Diretor> diretores = new ArrayList<>();
+        diretores.add(diretor);
+
+            for(int i=0;i<diretores.size();i++){
+                System.out.println(diretores.get(i));
+            }
 
     }
 }

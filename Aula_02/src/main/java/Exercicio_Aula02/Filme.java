@@ -17,6 +17,10 @@ public class Filme {
         this.diretor = diretor;
     }
 
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
     private String nome;
     private String descricao;
     private Integer duracao;
@@ -24,8 +28,9 @@ public class Filme {
     private Double avaliacao;
     private Diretor diretor;
 
-
-
+    public String getNome(){
+        return nome;
+    }
 
     public void reproduzir(){
         System.out.println("Nome Filme: "+nome);
