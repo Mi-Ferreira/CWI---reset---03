@@ -1,5 +1,8 @@
 package Exercicio_Aula02;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public enum Genero {
     MASCULINO("masculino"),
     FEMININO("feminino"),
