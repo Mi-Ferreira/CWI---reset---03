@@ -31,7 +31,7 @@ public class Aplicacao {
         diretores.add(diretor);
 
             for(int i=0;i<diretores.size();i++){
-                System.out.println(diretores.get(i));
+                System.out.println(diretores.get(i).getNome());
             }
 
     }
