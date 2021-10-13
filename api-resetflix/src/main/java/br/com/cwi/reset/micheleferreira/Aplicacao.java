@@ -1,14 +1,12 @@
 package br.com.cwi.reset.micheleferreira;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Aplicacao {
     public static void main(String[] args) {
         FakeDataBase fakeDatabase = new FakeDataBase();
-
         AtorService atorService = new AtorService(fakeDatabase);
-
 
         String nome = "Will Smith";
         Integer dia = 25;
@@ -17,7 +15,6 @@ public class Aplicacao {
         StatusCarreira statusCarreira = StatusCarreira.EM_ATIVIDADE;
         Integer anoInicioAtividade = 1986;
         AtorRequest atorRequest = new AtorRequest(nome, dia, mes,ano, statusCarreira, anoInicioAtividade);
-
         Ator ator = new Ator(IdGeradorAtor.getProximoId(),atorRequest.getNome(),atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(),atorRequest.getAnoInicioAtividade());
 
         atorService.criarAtor(atorRequest);
