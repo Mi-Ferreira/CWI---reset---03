@@ -5,8 +5,8 @@ import java.util.List;
 
 public class FakeDataBase {
 
-    private List<Ator> atores = new ArrayList<>();
-    private List<Diretor> diretores = new ArrayList<>();
+    public List<Ator> atores = new ArrayList<>();
+    public List<Diretor> diretores = new ArrayList<>();
 
     public void persisteAtor(Ator ator) {
         atores.add(ator);
@@ -16,11 +16,11 @@ public class FakeDataBase {
         return atores;
     }
 
-    public void persisteDiretor(Diretor diretor) {
+  public void persisteDiretor(Diretor diretor) {
         diretores.add(diretor);
     }
 
-    public List<Diretor> recuperaDiretores() {
+  public List<Diretor> recuperaDiretores() {
         return diretores;
     }
 }

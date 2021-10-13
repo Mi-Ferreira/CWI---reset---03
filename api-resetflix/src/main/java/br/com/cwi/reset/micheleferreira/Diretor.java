@@ -3,12 +3,12 @@ package br.com.cwi.reset.micheleferreira;
 import java.time.LocalDate;
 
 public class Diretor {
-    private int id;
+    private Integer id;
     private String nome;
     private LocalDate dataNascimento;
-    private LocalDate anoInicioAtividade;
+    private Integer anoInicioAtividade;
 
-    public Diretor(int id, String nome, LocalDate dataNascimento, LocalDate anoInicioAtividade) {
+    public Diretor(Integer id, String nome, LocalDate dataNascimento, Integer anoInicioAtividade) {
         this.id = id;
         this.nome = nome;
         this.dataNascimento = dataNascimento;

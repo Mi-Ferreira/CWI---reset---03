@@ -30,9 +30,8 @@ public class Aplicacao {
         List<Diretor> diretores = new ArrayList<>();
         diretores.add(diretor);
 
-            for(int i=0;i<diretores.size();i++){
-                System.out.println(diretores.get(i).getNome());
-            }
+        System.out.println(diretores.get(0).getNome().toString());
+
 
     }
 }
