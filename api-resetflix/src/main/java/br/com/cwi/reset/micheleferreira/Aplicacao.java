@@ -14,10 +14,29 @@ public class Aplicacao {
         Integer ano = 1968;
         StatusCarreira statusCarreira = StatusCarreira.EM_ATIVIDADE;
         Integer anoInicioAtividade = 1986;
-        AtorRequest atorRequest = new AtorRequest(nome, dia, mes,ano, statusCarreira, anoInicioAtividade);
-        Ator ator = new Ator(IdGeradorAtor.getProximoId(),atorRequest.getNome(),atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(),atorRequest.getAnoInicioAtividade());
 
-        atorService.criarAtor(atorRequest);
+        AtorRequest atorRequest = new AtorRequest(nome, dia, mes,ano, statusCarreira, anoInicioAtividade);
+
+        try{
+            atorService.criarAtor(atorRequest);
+        }
+        catch(CamposPreenchimentoObrigatorioException e){
+            System.out.println(e.getMessage());
+        }
+        catch(NomeeSobrenomeException f){
+            System.out.println(f.getMessage());
+        }
+        catch(DataNascimentoInvalidaException g){
+            System.out.println(g.getMessage());
+        }
+        catch(NomeeSobrenomeException h){
+            System.out.println(h.getMessage());
+        }
+        catch(NomesIguaisInvalidoException i){
+            System.out.println(i.getMessage());
+        }
+
+        Ator ator = new Ator(IdGeradorAtor.getProximoId(),atorRequest.getNome(),atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(),atorRequest.getAnoInicioAtividade());
 
         List<Ator> atores = fakeDatabase.recuperaAtores();
 
