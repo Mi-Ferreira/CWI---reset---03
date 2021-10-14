@@ -14,4 +14,8 @@ public class Diretor {
         this.dataNascimento = dataNascimento;
         this.anoInicioAtividade = anoInicioAtividade;
     }
+
+    public String getNome() {
+        return nome;
+    }
 }

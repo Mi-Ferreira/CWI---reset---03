@@ -15,6 +15,14 @@ public class FakeDataBase {
         }
     }
 
+    public boolean verificacaoDiretorExiste(DiretorRequest diretorRequest){
+        for(int i = 0;i< diretores.size();i++){
+            if (diretores.get(i).toString()==diretorRequest.getNome()) {
+                return true;}
+        }
+    }
+
+
     public void persisteAtor(Ator ator) {
         atores.add(ator);
     }
