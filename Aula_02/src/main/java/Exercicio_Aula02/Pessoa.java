@@ -32,6 +32,6 @@ public abstract class  Pessoa {
     }
     public Integer calcularIdade(){
         return Period.between(dataNascimento,LocalDate.now()).getYears();
-                                                                  import java.time.Period;
-    }                                              import java.time.Period;
+
+    }
 }

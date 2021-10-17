@@ -30,7 +30,15 @@ public class AtorService {
         if (verificacaoAtorExiste()){
             throw new NomesIguaisInvalidoException();
         }
+
+        fakeDataBase.persisteeAtor(ator);
     }
 
+    public void consultarAtor()throws CampoObrigatorioIdException{
+        if ( == null){
+            throw new CampoObrigatorioIdException ();
+        }
+        return Ator.getNome();
+    }
 
 }

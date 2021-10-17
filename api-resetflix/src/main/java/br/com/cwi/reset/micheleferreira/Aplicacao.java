@@ -7,6 +7,7 @@ public class Aplicacao {
     public static void main(String[] args) {
         FakeDataBase fakeDatabase = new FakeDataBase();
         AtorService atorService = new AtorService(fakeDatabase);
+        AtorService atorService2 = new AtorService(fakeDatabase);
         DiretorService diretorService = new DiretorService(fakeDatabase);
 
         //Ator
@@ -23,21 +24,15 @@ public class Aplicacao {
         try{
             atorService.criarAtor(atorRequest);
         }
-        catch(CamposPreenchimentoObrigatorioException e){
-            System.out.println(e.getMessage());
-        }
-
-        catch(DataNascimentoInvalidaException e){
-            System.out.println(e.getMessage());
-        }
-        catch(AnoInicioAtividadeInvalidoException e){
-            System.out.println(e.getMessage());
-        }
-        catch(NomesIguaisInvalidoException e){
+        catch(CamposPreenchimentoObrigatorioException | DataNascimentoInvalidaException | AnoInicioAtividadeInvalidoException | NomesIguaisInvalidoException e){
             System.out.println(e.getMessage());
         }
 
         Ator ator = new Ator(IdGeradorAtor.getProximoIdAtor(),atorRequest.getNome(),atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(),atorRequest.getAnoInicioAtividade());
+
+        Integer ID = 1;
+        atorService2.consultarAtor(ID);
+
 
         List<Ator> atores = fakeDatabase.recuperaAtores();
 
@@ -56,21 +51,11 @@ public class Aplicacao {
         try{
             DiretorService.cadastrarDiretor(diretorRequest);
         }
-        catch(CamposPreenchimentoObrigatorioException e){
+        catch(CamposPreenchimentoObrigatorioException | NomesIguaisInvalidoException | DataNascimentoInvalidaException | AnoInicioAtividadeInvalidoException e){
             System.out.println(e.getMessage());
         }
 
-        catch(DataNascimentoInvalidaException e1){
-            System.out.println(e1.getMessage());
-        }
-        catch(AnoInicioAtividadeInvalidoException e2){
-            System.out.println(e2.getMessage());
-        }
-        catch(NomesIguaisInvalidoException e3){
-            System.out.println(e3.getMessage());
-        }
-
-        Diretor diretor = new Diretor(IdGeradorDiretor.getProximoIdDiretor(),diretorRequest.getNome(),diretorRequest.getDataNascimento(), diretorRequest.getAnoInicioAtividade());
+        Diretor diretor = new Diretor(idGeradorDiretor.getProximoIdDiretor(),diretorRequest.getNome(),diretorRequest.getDataNascimento(), diretorRequest.getAnoInicioAtividade());
 
         List<Diretor> diretores = fakeDatabase.recuperaDiretores();
 
