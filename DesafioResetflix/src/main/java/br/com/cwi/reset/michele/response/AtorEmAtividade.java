@@ -25,4 +25,16 @@ public class AtorEmAtividade {
     public LocalDate getDataNascimento() {
         return dataNascimento;
     }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setDataNascimento(LocalDate dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
 }

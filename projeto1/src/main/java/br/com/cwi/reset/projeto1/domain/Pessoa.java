@@ -33,6 +33,7 @@ public abstract class Pessoa {
         return genero;
     }
 
+
     private Integer calcularIdade() {
         return Period.between(LocalDate.now(), dataNascimento).getYears();
     }

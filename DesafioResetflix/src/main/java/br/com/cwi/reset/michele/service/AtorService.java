@@ -1,52 +1,78 @@
 package br.com.cwi.reset.michele.service;
 
-import br.com.cwi.reset.michele.FakeDatabase;
+
 import br.com.cwi.reset.michele.exception.*;
 import br.com.cwi.reset.michele.model.Ator;
 import br.com.cwi.reset.michele.model.StatusCarreira;
 import br.com.cwi.reset.michele.request.AtorRequest;
 import br.com.cwi.reset.michele.response.AtorEmAtividade;
-import br.com.cwi.reset.michele.validator.BasicInfoRequiredValidator;
 
+import br.com.cwi.reset.michele.validator.FakeDatabase;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class AtorService {
 
-    private FakeDatabase fakeDatabase;
+    private final FakeDatabase fakeDatabase;
 
     public AtorService(FakeDatabase fakeDatabase) {
         this.fakeDatabase = fakeDatabase;
     }
 
     public void criarAtor(AtorRequest atorRequest) throws Exception {
-        new BasicInfoRequiredValidator().accept(atorRequest.getNome(), atorRequest.getDataNascimento(), atorRequest.getAnoInicioAtividade(), TipoDominioException.ATOR);
+        if (atorRequest.getNome() == null) {
+            throw new NomeNaoInformadoException();
+        }
+
+        if (atorRequest.getDataNascimento() == null) {
+            throw new DataNascimentoNaoInformadoException();
+        }
 
         if (atorRequest.getStatusCarreira() == null) {
             throw new StatusCarreiraNaoInformadoException();
+        }
+
+        if (atorRequest.getNome().split("").length <2) {
+            throw new NomeSobrenomeObrigatorioException();
+        }
+         LocalDate dataAtual = LocalDate.now();
+        if (dataAtual.isBefore(atorRequest.getDataNascimento())){
+            throw new NascidosNoFuturoException();
+        }
+
+        Integer anoNascimento = atorRequest.getDataNascimento().getYear();
+        if(atorRequest.getAnoInicioAtividade()<anoNascimento){
+            throw new AnoInicioAtividadeInvalidoException();
         }
 
         final List<Ator> atoresCadastrados = fakeDatabase.recuperaAtores();
 
         for (Ator atorCadastrado : atoresCadastrados) {
             if (atorCadastrado.getNome().equalsIgnoreCase(atorRequest.getNome())) {
-                throw new CadastroDuplicadoException(TipoDominioException.ATOR.getSingular(), atorRequest.getNome());
+                throw new CadastroDuplicadoException();
             }
         }
+
+
 
         final Integer idGerado = atoresCadastrados.size() + 1;
 
         final Ator ator = new Ator(idGerado, atorRequest.getNome(), atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(), atorRequest.getAnoInicioAtividade());
 
         fakeDatabase.persisteAtor(ator);
+
     }
 
     public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) throws Exception {
         final List<Ator> atoresCadastrados = fakeDatabase.recuperaAtores();
 
         if (atoresCadastrados.isEmpty()) {
-            throw new ListaVaziaException(TipoDominioException.ATOR.getSingular(), TipoDominioException.ATOR.getPlural());
+            throw new ListaVaziaException();
         }
 
         final List<AtorEmAtividade> retorno = new ArrayList<>();
@@ -88,14 +114,14 @@ public class AtorService {
             }
         }
 
-        throw new ConsultaIdInvalidoException(TipoDominioException.ATOR.getSingular(), id);
+        throw new ConsultaIdInvalidoException();
     }
 
     public List<Ator> consultarAtores() throws Exception {
         final List<Ator> atores = fakeDatabase.recuperaAtores();
 
         if (atores.isEmpty()) {
-            throw new ListaVaziaException(TipoDominioException.ATOR.getSingular(), TipoDominioException.ATOR.getPlural());
+            throw new ListaVaziaException();
         }
 
         return atores;

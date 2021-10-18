@@ -1,6 +1,10 @@
 package br.com.cwi.reset.michele.validator;
 
-import br.com.cwi.reset.michele.model.*;
+import br.com.cwi.reset.michele.model.Ator;
+import br.com.cwi.reset.michele.model.Diretor;
+import br.com.cwi.reset.michele.model.Estudio;
+import br.com.cwi.reset.michele.model.Filme;
+import br.com.cwi.reset.michele.model.PersonagemAtor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +21,7 @@ public class FakeDatabase {
     }
 
     private List<Ator> atores = new ArrayList<>();
-    private List<Diretor> diretores = new ArrayList<>();
+     private List<Diretor> diretores = new ArrayList<>();
     private List<Estudio> estudios = new ArrayList<>();
     private List<Filme> filmes = new ArrayList<>();
     private List<PersonagemAtor> personagens = new ArrayList<>();
