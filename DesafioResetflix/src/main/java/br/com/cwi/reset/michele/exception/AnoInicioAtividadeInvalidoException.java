@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class AnoInicioAtividadeInvalidoException extends Exception {
-    public AnoInicioAtividadeInvalidoException(String tipo) {
-        super(String.format("Ano de início de atividade inválido para o %s cadastrado.", tipo));
+    public AnoInicioAtividadeInvalidoException() {
+        super("Ano Inicio Atividade Invalido");
     }
 }

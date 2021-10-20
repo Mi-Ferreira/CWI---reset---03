@@ -1,11 +1,14 @@
 package br.com.cwi.reset.michele.controller;
 
 
+import br.com.cwi.reset.michele.model.Diretor;
 import br.com.cwi.reset.michele.request.DiretorRequest;
 import br.com.cwi.reset.michele.service.DiretorService;
 import br.com.cwi.reset.michele.validator.FakeDatabase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/diretores")
@@ -25,15 +28,13 @@ public class DiretorController {
     }
 
 
-    @GetMapping(/{id})
-    @ResponseStatus(HttpStatus.CREATED)
-    public consultarDiretores(@PathVariable Integer id) throws Exception {
-        return diretorService.consultarDiretores(Integer id)>;
+    @GetMapping("/{id}")
+    public Diretor consultarDiretor(@PathVariable Integer id) throws Exception {
+        return diretorService.consultarDiretor(Integer id)>;
     }
 
     @GetMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public consultarDiretores() {
+    public List<Diretor> consultarDiretores() throws Exception{
         return diretorService.consultarDiretores();
     }
 

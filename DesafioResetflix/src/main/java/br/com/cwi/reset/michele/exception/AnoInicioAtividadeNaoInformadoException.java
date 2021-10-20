@@ -4,8 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class AnoInicioAtividadeNaoInformadoException extends CampoNaoInformadoException {
+public class AnoInicioAtividadeNaoInformadoException extends Exception {
     public AnoInicioAtividadeNaoInformadoException() {
-        super("anoInicioAtividade");
+        super("Ano Inicio de Atividade não Informado");
     }
 }

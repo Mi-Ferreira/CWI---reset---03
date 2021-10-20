@@ -20,6 +20,7 @@ public class AtorService {
 
     private final FakeDatabase fakeDatabase;
 
+
     public AtorService(FakeDatabase fakeDatabase) {
         this.fakeDatabase = fakeDatabase;
     }
@@ -40,7 +41,8 @@ public class AtorService {
         if (atorRequest.getNome().split("").length <2) {
             throw new NomeSobrenomeObrigatorioException();
         }
-         LocalDate dataAtual = LocalDate.now();
+
+        LocalDate dataAtual = LocalDate.now();
         if (dataAtual.isBefore(atorRequest.getDataNascimento())){
             throw new NascidosNoFuturoException();
         }
@@ -58,8 +60,6 @@ public class AtorService {
             }
         }
 
-
-
         final Integer idGerado = atoresCadastrados.size() + 1;
 
         final Ator ator = new Ator(idGerado, atorRequest.getNome(), atorRequest.getDataNascimento(), atorRequest.getStatusCarreira(), atorRequest.getAnoInicioAtividade());
@@ -68,14 +68,15 @@ public class AtorService {
 
     }
 
-    public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) throws Exception {
+    public List<AtorEmAtividade> listarAtoresEmAtividade() throws Exception {
         final List<Ator> atoresCadastrados = fakeDatabase.recuperaAtores();
 
         if (atoresCadastrados.isEmpty()) {
             throw new ListaVaziaException();
         }
-
         final List<AtorEmAtividade> retorno = new ArrayList<>();
+
+        String filtroNome = null;
 
         if (filtroNome != null) {
             for (Ator ator : atoresCadastrados) {
@@ -93,11 +94,9 @@ public class AtorService {
                 }
             }
         }
-
         if (retorno.isEmpty()) {
-            throw new FiltroNomeNaoEncontrado("Ator", filtroNome);
+            throw new FiltroNomeNaoEncontrado("Ator","Em Atividade");
         }
-
         return retorno;
     }
 
@@ -105,7 +104,6 @@ public class AtorService {
         if (id == null) {
             throw new IdNaoInformado();
         }
-
         final List<Ator> atores = fakeDatabase.recuperaAtores();
 
         for (Ator ator : atores) {
@@ -113,7 +111,6 @@ public class AtorService {
                 return ator;
             }
         }
-
         throw new ConsultaIdInvalidoException();
     }
 

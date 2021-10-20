@@ -1,19 +1,12 @@
 package br.com.cwi.reset.michele.service;
 
-import br.com.cwi.reset.michele.FakeDatabase;
 import br.com.cwi.reset.michele.exception.*;
-import br.com.cwi.reset.michele.model.Ator;
 import br.com.cwi.reset.michele.model.Diretor;
-import br.com.cwi.reset.michele.model.StatusCarreira;
-import br.com.cwi.reset.michele.request.AtorRequest;
 import br.com.cwi.reset.michele.request.DiretorRequest;
-import br.com.cwi.reset.michele.response.AtorEmAtividade;
 import br.com.cwi.reset.michele.validator.FakeDatabase;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class DiretorService {
 
@@ -31,7 +24,6 @@ public class DiretorService {
         if (diretorRequest.getDataNascimento() == null) {
             throw new DataNascimentoNaoInformadoException();
         }
-
 
         if (diretorRequest.getNome().split("").length <2) {
             throw new NomeSobrenomeObrigatorioException();
@@ -60,6 +52,21 @@ public class DiretorService {
 
         fakeDatabase.persisteDiretor(diretor);
 
+    }
+
+    public Diretor consultarDiretor(Integer id) throws Exception {
+        if (id == null) {
+            throw new IdNaoInformado();
+        }
+
+        final List<Diretor> diretores = fakeDatabase.recuperaDiretores();
+
+        for (Diretor diretor : diretores) {
+            if (diretor.getId().equals(id)) {
+                return diretor;
+            }
+        }
+        throw new ConsultaIdInvalidoException();
     }
 
     public List<Diretor> consultarDiretores() throws Exception {

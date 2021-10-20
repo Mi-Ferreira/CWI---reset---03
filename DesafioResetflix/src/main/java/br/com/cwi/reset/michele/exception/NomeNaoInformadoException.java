@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class NomeNaoInformadoException extends CampoNaoInformadoException {
+public class NomeNaoInformadoException extends Exception {
 
     public NomeNaoInformadoException() {
-        super("nome");
+        super("Nome não informado");
     }
 }

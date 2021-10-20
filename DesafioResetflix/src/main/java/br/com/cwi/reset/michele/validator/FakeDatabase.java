@@ -17,11 +17,13 @@ public class FakeDatabase {
         return fakeDatabase;
     }
 
+
     private FakeDatabase() {
+
     }
 
     private List<Ator> atores = new ArrayList<>();
-     private List<Diretor> diretores = new ArrayList<>();
+    private List<Diretor> diretores = new ArrayList<>();
     private List<Estudio> estudios = new ArrayList<>();
     private List<Filme> filmes = new ArrayList<>();
     private List<PersonagemAtor> personagens = new ArrayList<>();

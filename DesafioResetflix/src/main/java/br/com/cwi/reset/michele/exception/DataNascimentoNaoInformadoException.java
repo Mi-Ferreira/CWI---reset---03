@@ -4,9 +4,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
-public class DataNascimentoNaoInformadoException extends CampoNaoInformadoException {
+public class DataNascimentoNaoInformadoException extends Exception {
 
     public DataNascimentoNaoInformadoException() {
-        super("dataNascimento");
+        super("Data de Nascimento não informado");
     }
 }
