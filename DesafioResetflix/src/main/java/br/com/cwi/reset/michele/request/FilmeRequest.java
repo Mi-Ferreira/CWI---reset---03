@@ -4,6 +4,7 @@ import br.com.cwi.reset.michele.model.Diretor;
 import br.com.cwi.reset.michele.model.Estudio;
 import br.com.cwi.reset.michele.model.Genero;
 import br.com.cwi.reset.michele.model.PersonagemAtor;
+import br.com.cwi.reset.michele.service.DiretorService;
 
 import java.util.List;
 
@@ -17,10 +18,9 @@ public class FilmeRequest {
     private Integer idDiretor;
     private Integer idEstudio;
     private String resumo;
-    private List<PersonagemAtor> personagens;
+    private List<PersonagemRequest> personagens;
 
-
-    public FilmeRequest(String nome, Integer anoLancamento, String capaFilme, List<Genero> generos, Integer idDiretor, Integer idEstudio, String resumo, List<PersonagemAtor> personagens) {
+    public FilmeRequest(String nome, Integer anoLancamento, String capaFilme, List<Genero> generos, Integer idDiretor, Integer idEstudio, String resumo, List<PersonagemRequest> personagens) {
         this.nome = nome;
         this.anoLancamento = anoLancamento;
         this.capaFilme = capaFilme;
@@ -87,11 +87,11 @@ public class FilmeRequest {
         this.resumo = resumo;
     }
 
-    public List<PersonagemAtor> getPersonagens() {
+    public List<PersonagemRequest> getPersonagens() {
         return personagens;
     }
 
-    public void setPersonagens(List<PersonagemAtor> personagens) {
+    public void setPersonagens(List<PersonagemRequest> personagens) {
         this.personagens = personagens;
     }
 }

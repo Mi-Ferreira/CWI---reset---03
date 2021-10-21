@@ -1,11 +1,27 @@
 package br.com.cwi.reset.michele.service;
 
 import br.com.cwi.reset.michele.exception.*;
-import br.com.cwi.reset.michele.model.Ator;
-import br.com.cwi.reset.michele.request.AtorRequest;
+import br.com.cwi.reset.michele.model.*;
 import br.com.cwi.reset.michele.request.FilmeRequest;
+import br.com.cwi.reset.michele.request.PersonagemRequest;
+import br.com.cwi.reset.michele.validator.FakeDatabase;
+
+import java.util.List;
 
 public class FilmeService {
+    private FakeDatabase fakeDatabase;
+    private AtorService atorService;
+    private DiretorService diretorService;
+    private EstudioService estudioService;
+    private PersonagemAtorService personagemAtorService;
+
+    public FilmeService(FakeDatabase fakeDatabase) {
+        this.fakeDatabase = fakeDatabase;
+        this.atorService = new AtorService(FakeDatabase.getInstance());
+        this.diretorService = new DiretorService(FakeDatabase.getInstance());
+        this.estudioService = new EstudioService(FakeDatabase.getInstance());
+        this.personagemAtorService =new PersonagemAtorService(FakeDatabase.getInstance());
+    }
 
     public void criarFilme(FilmeRequest filmeRequest) throws Exception {
         if (filmeRequest.getNome() == null) {
@@ -20,16 +36,31 @@ public class FilmeService {
             throw new CapaFilmeNaoInformadoException();
         }
 
-        if (filmeRequest.getIdDiretor() == null) {
-            throw new IdNaoInformado();
+        if (filmeRequest.getGeneros() == null) {
+            throw new GeneroNaoInformadoException();
         }
 
-        if (filmeRequest.getIdEstudio() == null) {
-            throw new IdNaoInformado();
+       DiretorService diretorService = new DiretorService();
+        diretorService.consultarDiretor(filmeRequest.getIdDiretor());
+
+        EstudioService estudioService = new EstudioService();
+       estudioService.consultarEstudio(filmeRequest.getIdEstudio());
+
+
+        if (filmeRequest.getResumo() == null) {
+            throw new ResumoNaoInformadoException();
         }
 
-        if (filmeRequest.getPersonagens()== null) {
-            throw new IdNaoInformado();
-        }
+        PersonagemAtorService personagemService = new PersonagemAtorService();
+        personagemService.criarPersonagem();
+
+        final List<Filme> filmes = fakeDatabase.recuperaFilmes();
+
+        final Integer idGerado = filmes.size() + 1;
+
+        final Filme filme = new Filme(idGerado, filmeRequest.getNome(), filmeRequest.getAnoLancamento(), filmeRequest.getCapaFilme(), filmeRequest.getGeneros(),filmeRequest.getCapaFilme(), filmeRequest.getCapaFilme(), estudioService.consultarEstudio(filmeRequest.getIdEstudio()), diretorService.consultarDiretor(filmeRequest.getIdDiretor()),personagemService.criarPersonagem(),filmeRequest.getResumo());
+
+        fakeDatabase.persisteAtor(filme);
+
 
 }

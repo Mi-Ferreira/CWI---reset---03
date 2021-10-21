@@ -25,6 +25,10 @@ public class AtorService {
         this.fakeDatabase = fakeDatabase;
     }
 
+    public AtorService() {
+
+    }
+
     public void criarAtor(AtorRequest atorRequest) throws Exception {
         if (atorRequest.getNome() == null) {
             throw new NomeNaoInformadoException();

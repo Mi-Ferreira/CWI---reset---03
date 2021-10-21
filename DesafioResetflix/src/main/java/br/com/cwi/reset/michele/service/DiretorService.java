@@ -16,6 +16,7 @@ public class DiretorService {
         this.fakeDatabase = fakeDatabase;
     }
 
+
     public void cadastrarDiretor(DiretorRequest diretorRequest) throws Exception {
         if (diretorRequest.getNome() == null) {
             throw new NomeNaoInformadoException();
