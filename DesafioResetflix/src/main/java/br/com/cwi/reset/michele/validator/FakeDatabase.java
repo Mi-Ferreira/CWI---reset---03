@@ -18,10 +18,6 @@ public class FakeDatabase {
     }
 
 
-    private FakeDatabase() {
-
-    }
-
     private List<Ator> atores = new ArrayList<>();
     private List<Diretor> diretores = new ArrayList<>();
     private List<Estudio> estudios = new ArrayList<>();
