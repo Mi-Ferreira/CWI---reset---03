@@ -7,7 +7,7 @@ import java.util.List;
 
 public class PetRepository {
 
-    private static List<Pet> pets = new ArrayList<>();
+    private static final List<Pet> pets = new ArrayList<>();
 
     public Pet buscarPeloNome(String nome) {
         for (Pet pet : pets) {
