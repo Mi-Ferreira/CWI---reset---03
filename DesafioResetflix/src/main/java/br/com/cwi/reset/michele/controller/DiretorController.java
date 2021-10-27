@@ -1,7 +1,6 @@
 package br.com.cwi.reset.michele.controller;
 
 
-import br.com.cwi.reset.michele.model.Diretor;
 import br.com.cwi.reset.michele.request.DiretorRequest;
 import br.com.cwi.reset.michele.service.DiretorService;
 import br.com.cwi.reset.michele.validator.FakeDatabase;
@@ -28,14 +27,14 @@ public class DiretorController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping(path = "/{id}")
     public Diretor consultarDiretor(@PathVariable Integer id) throws Exception {
-        return diretorService.consultarDiretor(Integer id)>;
+        return this.diretorService.consultarDiretor(id);
     }
 
     @GetMapping
-    public List<Diretor> consultarDiretores() throws Exception{
-        return diretorService.consultarDiretores();
+    public List<Diretor> consultarDiretores(@RequestParam String filtroNome) throws Exception{
+        return this.diretorService.consultarDiretores(filtroNome);
     }
 
 }

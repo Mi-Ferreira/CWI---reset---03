@@ -6,6 +6,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(HttpStatus.BAD_REQUEST)
 public class IdNaoInformado extends Exception {
     public IdNaoInformado() {
-        super("id");
+        super("id não informado");
     }
 }

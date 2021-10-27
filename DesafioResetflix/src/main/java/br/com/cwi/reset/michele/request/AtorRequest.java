@@ -1,7 +1,5 @@
 package br.com.cwi.reset.michele.request;
 
-import br.com.cwi.reset.michele.model.StatusCarreira;
-
 import java.time.LocalDate;
 
 public class AtorRequest {

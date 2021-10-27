@@ -1,38 +1,47 @@
 package br.com.cwi.reset.michele.service;
 
-import br.com.cwi.reset.michele.exception.IdNaoInformado;
-import br.com.cwi.reset.michele.exception.IdNãoExisteEstudioException;
-import br.com.cwi.reset.michele.exception.NaoExisteIdAtorException;
-import br.com.cwi.reset.michele.exception.NomeNaoInformadoException;
-import br.com.cwi.reset.michele.model.Ator;
-import br.com.cwi.reset.michele.model.Estudio;
-import br.com.cwi.reset.michele.model.PersonagemAtor;
-import br.com.cwi.reset.michele.request.AtorRequest;
+import br.com.cwi.reset.michele.exception.*;
 import br.com.cwi.reset.michele.request.PersonagemRequest;
 import br.com.cwi.reset.michele.validator.FakeDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class PersonagemAtorService {
     private final FakeDatabase fakeDatabase;
+    private AtorService atorService;
 
     public PersonagemAtorService(FakeDatabase fakeDatabase) {
         this.fakeDatabase = fakeDatabase;
+        this.atorService = new AtorService(fakeDatabase);
     }
 
 
-    public void criarPersonagem(PersonagemRequest personagemRequest) throws Exception {
+    public PersonagemAtor criarPersonagem(PersonagemRequest personagemRequest) throws Exception {
 
-        AtorService atorService = new AtorService();
-        atorService.consultarAtor(personagemRequest.getIdAtor());
+        if (personagemRequest.getIdAtor() == null) {
+            throw new IdNaoInformado();
+        }
 
-        final List<PersonagemAtor> personagens = fakeDatabase.recuperaPersonagens();
+        if (personagemRequest.getNomePersonagem() == null) {
+            throw new PersonagemNaoInformado();
+        }
 
-        final Integer idGerado = personagens.size() + 1;
+        if (personagemRequest.getDescricaoPersonagem() == null) {
+            throw new DescricaoNaoInformadoException();
+        }
 
-        final PersonagemAtor personagemAtor = new PersonagemAtor(idGerado,atorService.consultarAtor(personagemRequest.getIdAtor()), personagemRequest.getNomePersonagem(), personagemRequest.getDescricaoPersonagem(), personagemRequest.getTipoAtuacao());
+        if (personagemRequest.getTipoAtuacao() == null) {
+            throw new GeneroNaoInformadoException();
+        }
+
+        final Integer idGerado = fakeDatabase.recuperaPersonagens().size() + 1;
+
+        final Ator ator = atorService.consultarAtor(personagemRequest.getIdAtor());
+
+        final PersonagemAtor personagemAtor = new PersonagemAtor(idGerado, ator, personagemRequest.getNomePersonagem(), personagemRequest.getDescricaoPersonagem(), personagemRequest.getTipoAtuacao());
 
         fakeDatabase.persistePersonagem(personagemAtor);
+
+        return personagemAtor;
+    }
+
 
 }

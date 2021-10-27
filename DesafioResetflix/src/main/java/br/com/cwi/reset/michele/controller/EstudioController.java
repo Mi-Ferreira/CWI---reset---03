@@ -1,9 +1,6 @@
 package br.com.cwi.reset.michele.controller;
 
-import br.com.cwi.reset.michele.model.Estudio;
-import br.com.cwi.reset.michele.request.DiretorRequest;
 import br.com.cwi.reset.michele.request.EstudioRequest;
-import br.com.cwi.reset.michele.service.DiretorService;
 import br.com.cwi.reset.michele.service.EstudioService;
 import br.com.cwi.reset.michele.validator.FakeDatabase;
 import org.springframework.http.HttpStatus;
@@ -29,13 +26,13 @@ public class EstudioController {
     }
 
     @GetMapping
-    public List <Estudio> consultarEstudios(String filtroNome) throws Exception {
-        return estudioService.consultarEstudios();
+    public List <Estudio> consultarEstudios(@RequestParam String filtroNome) throws Exception {
+        return estudioService.consultarEstudios(filtroNome);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path="/{id}")
     public Estudio consultarEstudio(@PathVariable Integer id) throws Exception {
-        return estudioService.consultarEstudio(Integer id);
+        return estudioService.consultarEstudio(id);
     }
 }
 

@@ -2,14 +2,10 @@ package br.com.cwi.reset.michele.service;
 
 
 import br.com.cwi.reset.michele.exception.*;
-import br.com.cwi.reset.michele.model.Ator;
-import br.com.cwi.reset.michele.model.StatusCarreira;
 import br.com.cwi.reset.michele.request.AtorRequest;
 import br.com.cwi.reset.michele.response.AtorEmAtividade;
 
 import br.com.cwi.reset.michele.validator.FakeDatabase;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,9 +21,6 @@ public class AtorService {
         this.fakeDatabase = fakeDatabase;
     }
 
-    public AtorService() {
-
-    }
 
     public void criarAtor(AtorRequest atorRequest) throws Exception {
         if (atorRequest.getNome() == null) {
@@ -72,15 +65,13 @@ public class AtorService {
 
     }
 
-    public List<AtorEmAtividade> listarAtoresEmAtividade() throws Exception {
+    public List<AtorEmAtividade> listarAtoresEmAtividade(String filtroNome) throws Exception {
         final List<Ator> atoresCadastrados = fakeDatabase.recuperaAtores();
 
         if (atoresCadastrados.isEmpty()) {
             throw new ListaVaziaException();
         }
         final List<AtorEmAtividade> retorno = new ArrayList<>();
-
-        String filtroNome = null;
 
         if (filtroNome != null) {
             for (Ator ator : atoresCadastrados) {

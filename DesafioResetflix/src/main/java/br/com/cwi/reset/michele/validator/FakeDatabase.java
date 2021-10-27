@@ -1,11 +1,5 @@
 package br.com.cwi.reset.michele.validator;
 
-import br.com.cwi.reset.michele.model.Ator;
-import br.com.cwi.reset.michele.model.Diretor;
-import br.com.cwi.reset.michele.model.Estudio;
-import br.com.cwi.reset.michele.model.Filme;
-import br.com.cwi.reset.michele.model.PersonagemAtor;
-
 import java.util.ArrayList;
 import java.util.List;
 

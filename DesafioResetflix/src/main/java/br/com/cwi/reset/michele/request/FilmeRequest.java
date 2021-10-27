@@ -1,11 +1,5 @@
 package br.com.cwi.reset.michele.request;
 
-import br.com.cwi.reset.michele.model.Diretor;
-import br.com.cwi.reset.michele.model.Estudio;
-import br.com.cwi.reset.michele.model.Genero;
-import br.com.cwi.reset.michele.model.PersonagemAtor;
-import br.com.cwi.reset.michele.service.DiretorService;
-
 import java.util.List;
 
 public class FilmeRequest {
@@ -43,9 +37,6 @@ public class FilmeRequest {
         return anoLancamento;
     }
 
-    public void setAnoLancamento(Integer anoLancamento) {
-        this.anoLancamento = anoLancamento;
-    }
 
     public String getCapaFilme() {
         return capaFilme;
@@ -59,39 +50,25 @@ public class FilmeRequest {
         return generos;
     }
 
-    public void setGeneros(List<Genero> generos) {
-        this.generos = generos;
-    }
 
     public Integer getIdDiretor() {
         return idDiretor;
     }
 
-    public void setIdDiretor(Integer idDiretor) {
-        this.idDiretor = idDiretor;
-    }
 
     public Integer getIdEstudio() {
         return idEstudio;
     }
 
-    public void setIdEstudio(Integer idEstudio) {
-        this.idEstudio = idEstudio;
-    }
 
     public String getResumo() {
         return resumo;
     }
 
-    public void setResumo(String resumo) {
-        this.resumo = resumo;
-    }
 
     public List<PersonagemRequest> getPersonagens() {
         return personagens;
     }
 
-    public void setPersonagens(List<PersonagemRequest> personagens) {
-        this.personagens = personagens;
-    }
+
 }

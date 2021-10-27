@@ -1,7 +1,5 @@
 package br.com.cwi.reset.michele.request;
 
-import br.com.cwi.reset.michele.model.StatusAtividade;
-
 
 import java.time.LocalDate;
 import java.time.chrono.ChronoLocalDate;

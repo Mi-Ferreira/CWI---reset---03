@@ -1,7 +1,6 @@
 package br.com.cwi.reset.michele.service;
 
 import br.com.cwi.reset.michele.exception.*;
-import br.com.cwi.reset.michele.model.Diretor;
 import br.com.cwi.reset.michele.request.DiretorRequest;
 import br.com.cwi.reset.michele.validator.FakeDatabase;
 
@@ -70,7 +69,7 @@ public class DiretorService {
         throw new ConsultaIdInvalidoException();
     }
 
-    public List<Diretor> consultarDiretores() throws Exception {
+    public List<Diretor> consultarDiretores(String filtroNome) throws Exception {
         final List<Diretor> diretores = fakeDatabase.recuperaDiretores();
 
         if (diretores.isEmpty()) {

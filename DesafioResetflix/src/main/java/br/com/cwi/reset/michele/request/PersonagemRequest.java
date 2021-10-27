@@ -1,8 +1,5 @@
 package br.com.cwi.reset.michele.request;
 
-import br.com.cwi.reset.michele.model.Ator;
-import br.com.cwi.reset.michele.model.TipoAtuacao;
-
 public class PersonagemRequest {
 
     private Integer idAtor;

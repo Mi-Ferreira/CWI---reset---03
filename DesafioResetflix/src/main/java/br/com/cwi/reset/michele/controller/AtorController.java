@@ -1,7 +1,6 @@
 package br.com.cwi.reset.michele.controller;
 
 
-import br.com.cwi.reset.michele.model.Ator;
 import br.com.cwi.reset.michele.request.AtorRequest;
 import br.com.cwi.reset.michele.response.AtorEmAtividade;
 import br.com.cwi.reset.michele.service.AtorService;
@@ -28,18 +27,18 @@ public class AtorController {
         this.atorService.criarAtor(atorRequest);
     }
 
-    @GetMapping("/em_atividade")
-    public List<AtorEmAtividade> listarAtoresEmAtividade() throws Exception {
-        return atorService.listarAtoresEmAtividade();
+    @GetMapping(path="/em_atividade")
+    public List<AtorEmAtividade> listarAtoresEmAtividade(@RequestParam String filtroNome) throws Exception {
+        return this.atorService.listarAtoresEmAtividade(filtroNome);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping(path="/{id}")
     public Ator consultarAtor(@PathVariable Integer id) throws Exception {
-        return atorService.consultarAtor(Integer id);
+        return this.atorService.consultarAtor(id);
     }
 
     @GetMapping
     public List<Ator> consultarAtores() throws Exception {
-        return atorService.consultarAtores();
+        return this.atorService.consultarAtores();
     }
 }
