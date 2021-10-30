@@ -179,8 +179,7 @@ public class Exercicio1Test {
         // Arrange
         Exercicios1 exercicios = new Exercicios1();
         List<Integer> media5 = new ArrayList<>();
-
-     Double expected = null;
+        Double expected = 0.0;
 
         // Action
        Double result = exercicios.calcularMedia(media5);
@@ -188,28 +187,56 @@ public class Exercicio1Test {
         // Assert
         Assertions.assertEquals(expected, result);
     }
+
     @Test
-    public void testInvertePalavra() {
+    public void testInvertePalavraAbacate() {
         // Arrange
-       Exercicios1 exercicios = new Exercicios1();
+        Exercicios1 exercicios = new Exercicios1();
         String palavra1 = "abacate";
         String expected1 = "etacaba";
-        String palavra2 = "banana";
-        String expected2 = "ananab";
-        String palavra3= "pessego";
-        String expected3 = "ogessep";
-        String palavra4="morango";
-        String expected4 = "ognarom";
 
         // Action
         String result1 = exercicios.obterPalavraInvertida(palavra1);
-        String result2 = exercicios.obterPalavraInvertida(palavra2);
-        String result3 = exercicios.obterPalavraInvertida(palavra3);
-        String result4 = exercicios.obterPalavraInvertida(palavra4);
         // Assert
         Assertions.assertEquals(expected1, result1);
+    }
+
+    @Test
+    public void testInvertePalavraBanana() {
+    // Arrange
+        Exercicios1 exercicios = new Exercicios1();
+
+        String palavra2 = "banana";
+        String expected2 = "ananab";
+
+        // Action
+        String result2 = exercicios.obterPalavraInvertida(palavra2);
+        // Assert
         Assertions.assertEquals(expected2, result2);
+
+    }
+
+    @Test
+    public void testInvertePalavraPessego() {
+    // Arrange
+        Exercicios1 exercicios = new Exercicios1();
+        String palavra3= "pessego";
+        String expected3 = "ogessep";
+        // Action
+        String result3 = exercicios.obterPalavraInvertida(palavra3);
+        // Assert
         Assertions.assertEquals(expected3, result3);
+    }
+
+    @Test
+    public void testInvertePalavraMorango() {
+    // Arrange
+        Exercicios1 exercicios = new Exercicios1();
+        String palavra4="morango";
+        String expected4 = "ognarom";
+        // Action
+        String result4 = exercicios.obterPalavraInvertida(palavra4);
+        // Assert
         Assertions.assertEquals(expected4, result4);
     }
 }

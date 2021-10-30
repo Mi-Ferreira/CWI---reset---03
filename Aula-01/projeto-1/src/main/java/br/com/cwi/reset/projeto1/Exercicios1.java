@@ -14,7 +14,10 @@ public class Exercicios1 {
         return sum;
     }
 
-    public Double calcularMedia(List<Integer> numeros) {
+    public double calcularMedia(List<Integer> numeros) {
+        if (numeros.size()==0){
+            return 0;
+        }
         return (double) somarLista(numeros) / numeros.size();
     }
 
