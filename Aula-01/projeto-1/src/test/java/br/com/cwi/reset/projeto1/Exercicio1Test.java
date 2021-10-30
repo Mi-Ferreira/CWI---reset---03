@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Exercicio1Test {
@@ -238,5 +239,35 @@ public class Exercicio1Test {
         String result4 = exercicios.obterPalavraInvertida(palavra4);
         // Assert
         Assertions.assertEquals(expected4, result4);
+    }
+
+    @Test
+    public void testListaComDoisNumerosIguais(){
+        // Arrange
+        Exercicios1 exercicios = new Exercicios1();
+        List<Integer> invert = Arrays.asList(1,2,1,4);
+
+       List expected = Arrays.asList(1,1,2,4);
+
+        // Action
+        List result = exercicios.ordenarLista(invert);
+
+        // Assert
+        Assertions.assertEquals(expected, result);
+    }
+
+    @Test
+    public void testListaComNumerosNegativos(){
+        // Arrange
+        Exercicios1 exercicios = new Exercicios1();
+        List<Integer> invert = Arrays.asList(-1,2,1,-4);
+
+        List expected = Arrays.asList(-4,-1,1,2);
+
+        // Action
+        List result = exercicios.ordenarLista(invert);
+
+        // Assert
+        Assertions.assertEquals(expected, result);
     }
 }
